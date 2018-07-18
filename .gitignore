@@ -262,3 +262,6 @@ __pycache__/
 
 # Vim swap files
 *.sw[o-z]
+
+barebone-ui-public/
+*.patch

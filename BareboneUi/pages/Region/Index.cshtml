@@ -1,0 +1,18 @@
+﻿@model BareboneUi.Pages.Region.RegionViewModel
+
+@{
+    ViewData["Title"] = "Region Page";
+}
+
+<h1>Region</h1>
+
+@using (Html.BeginForm("Index", "Region", FormMethod.Post))
+{
+    @Html.HiddenFor(viewModel => viewModel.RegionUri)
+
+
+    @Html.LabelFor(x => x.RegionId)
+    @Html.DropDownListFor(x => x.RegionId, new SelectList(Model.Regions, "Id", "Name"))
+
+    <button id="submitRegion" type="submit">Submit</button>
+}

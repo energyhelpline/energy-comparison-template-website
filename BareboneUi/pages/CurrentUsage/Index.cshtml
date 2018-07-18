@@ -1,0 +1,125 @@
+﻿@model BareboneUi.Pages.CurrentUsage.CurrentUsageViewModel
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>Current Usage</h1>
+
+@{
+    Html.RenderPartial("_ErrorPartial", Model);
+}
+
+@using (Html.BeginForm("Index", "CurrentUsage", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.CurrentUsageUri)
+
+    <table>
+        <tr>
+            <td><label for="NightPercentageUsage">Night Percentage Usage</label></td>
+            <td><input id="NightPercentageUsage" name="nightPercentageUsage" type="text" /></td>
+        </tr>
+        <tr>
+            <td>
+                Gas Usage Type
+            </td>
+            <td>
+                <label for="simple">Simple Estimate</label>
+                <input id="simple" type="radio" name="GasUsageType" value="2" checked="checked" />
+                <label for="detailed">Detailed Estimate</label>
+                <input id="detailed" type="radio" name="GasUsageType" value="1" />
+                <label for="spend">Spend</label>
+                <input id="spend" type="radio" name="GasUsageType" value="4" />
+                <label for="usage">Usage As kWh</label>
+                <input id="usage" type="radio" name="GasUsageType" value="3" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Electricity Usage Type
+            </td>
+            <td>
+                <label for="simple">Simple Estimate</label>
+                <input id="simple" type="radio" name="ElectricityUsageType" value="2" checked="checked" />
+                <label for="detailed">Detailed Estimate</label>
+                <input id="detailed" type="radio" name="ElectricityUsageType" value="1" />
+                <label for="spend">Spend</label>
+                <input id="spend" type="radio" name="ElectricityUsageType" value="4" />
+                <label for="usage">Usage As kWh</label>
+                <input id="usage" type="radio" name="ElectricityUsageType" value="3" />
+            </td>
+        </tr>
+        <tr>
+            <td>Simple Estimate</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.GasUsageSimpleEstimator)</td>
+            <td>@Html.DropDownListFor(x => x.GasUsageSimpleEstimator, new SelectList(Model.GasUsageSimpleEstimators, "Id", "Name"))</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.ElectricityUsageSimpleEstimator)</td>
+            <td>@Html.DropDownListFor(x => x.ElectricityUsageSimpleEstimator, new SelectList(Model.ElectricityUsageSimpleEstimators, "Id", "Name"))</td>
+        </tr>
+        <tr>
+            <td>Detailed Estimate</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.HouseType)</td>
+            <td>@Html.DropDownListFor(x => x.HouseType, new SelectList(Model.HouseTypeValues, "Id", "Name"))</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.NumberOfBedrooms)</td>
+            <td>@Html.DropDownListFor(x => x.NumberOfBedrooms, new SelectList(Model.NumberOfBedroomsValues, "Id", "Name"))</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.MainCookingSource)</td>
+            <td>@Html.DropDownListFor(x => x.MainCookingSource, new SelectList(Model.MainCookingSourceValues, "Id", "Name"))</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.CookingFrequency)</td>
+            <td>@Html.DropDownListFor(x => x.CookingFrequency, new SelectList(Model.CookingFrequencyValues, "Id", "Name"))</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.CentralHeating)</td>
+            <td>@Html.DropDownListFor(x => x.CentralHeating, new SelectList(Model.CentralHeatingValues, "Id", "Name"))</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.NumberOfOccupants)</td>
+            <td>@Html.DropDownListFor(x => x.NumberOfOccupants, new SelectList(Model.NumberOfOccupantsValues, "Id", "Name"))</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.Insulation)</td>
+            <td>@Html.DropDownListFor(x => x.Insulation, new SelectList(Model.InsulationValues, "Id", "Name"))</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.EnergyUsage)</td>
+            <td>@Html.DropDownListFor(x => x.EnergyUsage, new SelectList(Model.EnergyUsageValues, "Id", "Name"))</td>
+        </tr>
+        <tr>
+            <td>Current Spend</td>
+        </tr>
+        <tr>
+            <td><label for="GasCurrentSpend">Gas Current Spend</label></td>
+            <td><input id="GasCurrentSpend" name="GasCurrentSpend" type="text" /></td>
+        </tr>
+        <tr>
+            <td><label for="ElectricityCurrentSpend">Electricity Current Spend</label></td>
+            <td><input id="ElectricityCurrentSpend" name="ElectricityCurrentSpend" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Current Usage As kWh</td>
+        </tr>
+        <tr>
+            <td><label for="GasCurrentUsageAsKwh">Gas Current Usage As kWh</label></td>
+            <td><input id="GasCurrentUsageAsKwh" name="GasCurrentUsageAsKwh" type="text" /></td>
+        </tr>
+        <tr>
+            <td><label for="ElectricityCurrentUsageAsKwh">Electricity Current Usage As kWh</label></td>
+            <td><input name="ElectricityCurrentUsageAsKwh" id="ElectricityCurrentUsageAsKwh" type="text" /></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right"><button id="submitCurrentUsage" type="submit">Submit</button></td>
+        </tr>
+    </table>
+}
+

@@ -1,0 +1,20 @@
+﻿@model BareboneUi.Pages.FutureTariffDetails.FutureTariffDetailsViewModel
+<div id="tariffDetails">
+    @foreach (var supply in Model.Supplies)
+    {
+        <table>
+            <tr data-fuel="@supply.Fuel"><td>Fuel: @supply.Fuel</td></tr>
+            <tr><td>Supplier: @supply.Supplier.Name</td></tr>
+            <tr><td>Tariff Name: @supply.SupplierTariff.Name</td></tr>
+            <tr><td>Tariff Type: @supply.SupplierTariff.TariffType</td></tr>
+            <tr><td>Payment Method: @supply.SupplierTariff.PaymentMethod.Name</td></tr>
+            <tr><td>Unit Rate: @supply.SupplierTariff.UnitCharge</td></tr>
+            <tr><td>Standing Charge: @supply.SupplierTariff.StandingCharge</td></tr>
+            <tr><td>Tariff End Date: @supply.SupplierTariff.TariffEndDate</td></tr>
+            <tr><td>Price Guaranteed Until: @supply.SupplierTariff.PriceGuaranteedUntil</td></tr>
+            <tr><td>Exit Fees: @supply.SupplierTariff.ExitFees</td></tr>
+            <tr><td>Discounts: @supply.SupplierTariff.Discounts</td></tr>
+            <tr><td>Additional Products Included: @supply.SupplierTariff.OtherServices</td></tr>
+        </table>
+    }
+</div>

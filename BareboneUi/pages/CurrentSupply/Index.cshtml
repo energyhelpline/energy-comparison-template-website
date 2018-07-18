@@ -1,0 +1,68 @@
+﻿@model BareboneUi.Pages.CurrentSupply.CurrentSupplyViewModel
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>Current Supply</h1>
+
+@{
+    Html.RenderPartial("_ErrorPartial", Model);
+}
+
+@using (Html.BeginForm("Index", "CurrentSupply", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.CurrentSupplyUrl)
+
+    <table>
+        <tr>
+            <td>@Html.LabelFor(x => x.IsGasComparison)</td>
+            <td>@Html.CheckBoxFor(x => x.IsGasComparison)</td>
+        </tr>
+        <tr>
+            <td><label for="GasSupplier">Gas Supplier</label></td>
+            <td><select id="GasSupplier" name="GasSupplier"></select></td>
+        </tr>
+        <tr>
+            <td><label for="GasSupplierTariff">Gas Supplier Tariff</label></td>
+            <td><select id="GasSupplierTariff" name="GasSupplierTariff"></select></td>
+        </tr>
+        <tr>
+            <td><label for="GasSupplierPaymentMethod">Gas Supplier Payment Method</label></td>
+            <td><select id="GasSupplierPaymentMethod" name="GasSupplierPaymentMethod"></select></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.IsElectricityComparison)</td>
+            <td>@Html.CheckBoxFor(x => x.IsElectricityComparison)</td>
+        </tr>
+        <tr>
+            <td><label for="ElectricitySupplier">Electricity Supplier</label></td>
+            <td><select id="ElectricitySupplier" name="ElectricitySupplier"></select></td>
+        </tr>
+        <tr>
+            <td><label for="ElectricitySupplierTariff">Electricity Supplier Tariff</label></td>
+            <td><select id="ElectricitySupplierTariff" name="ElectricitySupplierTariff"></select></td>
+        </tr>
+        <tr>
+            <td><label for="ElectricitySupplierPaymentMethod">Electricity Supplier Payment Method</label></td>
+            <td><select id="ElectricitySupplierPaymentMethod" name="ElectricitySupplierPaymentMethod"></select></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.Economy7)</td>
+            <td>@Html.CheckBoxFor(x => x.Economy7)</td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right"><button id="submitCurrentSupply" type="submit">Submit</button></td>
+        </tr>
+    </table>
+}
+<script src="lib/jquery/dist/jquery.min.js"></script>
+<script src="lib/lodash/dist/lodash.min.js"></script>
+<script type="text/javascript">
+    var ehl;
+
+    ehl = {
+        currentSupplies: @Html.Raw(Model.CurrentSupplies)
+    };
+</script>
+<script src="js/currentSupplies.js"></script>

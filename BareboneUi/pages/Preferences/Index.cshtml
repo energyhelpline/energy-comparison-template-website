@@ -1,0 +1,27 @@
+﻿@model BareboneUi.Pages.Preferences.PreferencesViewModel
+
+<h1>Preferences</h1>
+
+@using (Html.BeginForm("Index", "Preferences", FormMethod.Post))
+{
+    @Html.HiddenFor(x=>x.PreferencesUri)
+
+    <table>
+        <tr>
+            <td>@Html.LabelFor(x => x.TariffFilterOption)</td>
+            <td>@Html.DropDownListFor(x => x.TariffFilterOption, new SelectList(Model.TariffFilterOptions, "Id", "Name"))</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.ResultsOrder)</td>
+            <td>@Html.DropDownListFor(x => x.ResultsOrder, new SelectList(Model.ResultsOrders, "Id", "Name"))</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.PaymentMethod)</td>
+            <td>@Html.DropDownListFor(x => x.PaymentMethod, new SelectList(Model.PaymentMethods, "Id", "Name"))</td>
+        </tr>
+
+        <tr>
+            <td colspan="2" align="right"><button id="submitPreferences" type="submit">Submit</button></td>
+        </tr>
+    </table>
+}

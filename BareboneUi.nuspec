@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>barebone-ui</id>
+    <version>1.0.0</version>
+    <authors>energyhelpline</authors>
+    <owners>energyhelpline</owners>
+    <description>Barebone EnergyHelpline API UI</description>
+    <copyright>Copyright 2018</copyright>
+  </metadata>
+  <files>
+    <file src="bareboneui\bin\release\netcoreapp2.0\publish\**\*" target="lib" />
+  </files>
+</package>

@@ -1,0 +1,39 @@
+﻿@model BareboneUi.Pages.FutureSupply.FutureSupplyViewModel
+
+@{
+    ViewData["Title"] = "Future Supplies";
+}
+
+<h1>Future Supplies</h1>
+
+@{
+    Html.RenderPartial("_ErrorPartial", Model);
+}
+
+@if (Model != null)
+{
+    if (Model.DualFuelEnergySupplies.Any())
+    {
+        <h2>Dual Fuel</h2>
+        <table>
+            @foreach (var energySupply in Model.DualFuelEnergySupplies)
+            {
+                <tr data-can-apply="@energySupply.CanApply">
+                    <td>
+                        @using (Html.BeginForm("Index", "FutureSupply", FormMethod.Post))
+                        {
+                            @Html.HiddenFor(x => x.FutureSupplyUri)
+                            <h3>@energySupply.SupplyDetails.Name</h3>
+                            <h4>Supplier: @energySupply.Supplier.Name</h4>
+                            <span>Annual Saving: @string.Format($"{energySupply.ExpectedAnnualSavings:C}")</span>
+                            <span>Payment Method: @Model.PaymentMethods[energySupply.SupplyDetails.PaymentMethod.Id]</span>
+                            @Html.ActionLink("Tariff Details", "Index", new { controller = "FutureTariffDetails", uri = energySupply.SupplyDetails.Details.Uri })
+                            <input type="hidden" name="FutureTariffId" value="@energySupply.Id" />
+                            <button type="submit">Select Tariff</button>
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+}

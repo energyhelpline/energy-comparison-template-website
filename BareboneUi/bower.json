@@ -1,0 +1,20 @@
+{
+  "name": "BareboneUi",
+  "homepage": "https://github.com/energyhelpline/barebone-ui",
+  "authors": [
+    "Ronan Moriarty <ronan.moriarty@firsthelpline.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "^4.17.10"
+  }
+}

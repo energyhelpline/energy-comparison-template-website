@@ -1,0 +1,26 @@
+﻿@model BareboneUi.Pages.PrepareForTransfer.PrepareForTransferViewModel
+
+@{
+    Html.RenderPartial("_ErrorPartial", Model);
+}
+
+@using (Html.BeginForm("Index", "PrepareForTransfer", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.PrepareForTransferUri)
+
+    <table>
+        <tr>
+            <td><label for="ThankYouUri">Thank You Uri</label></td>
+            <td><input id="ThankYouUri" name="ThankYouUri" type="text" /></td>
+        </tr>
+        <tr>
+            <td><label for="CallbackUri">Callback Uri</label></td>
+            <td><input id="CallbackUri" name="CallbackUri" type="text" /></td>
+        </tr>
+
+        <tr>
+            <td colspan="2" align="right"><button id="submitPrepareForTransfer" type="submit">Submit</button></td>
+        </tr>
+    </table>
+
+}

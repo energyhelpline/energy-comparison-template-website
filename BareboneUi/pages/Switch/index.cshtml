@@ -1,0 +1,166 @@
+﻿@model BareboneUi.Pages.Switch.SwitchViewModel
+
+<h1>Switch Resource</h1>
+
+<table>
+    <tr>
+        <td>customerPostcode</td>
+        <td><span id="customerPostcode">@Model.Postcode</span></td>
+    </tr>
+    <tr>
+        <td>customerGasSupplyName</td>
+        <td><span id="customerGasSupplyName">@Model.GasSupplyName</span></td>
+    </tr>
+    <tr>
+        <td>customerGasTariff</td>
+        <td><span id="customerGasTariff">@Model.GasTariff</span></td>
+    </tr>
+    <tr>
+        <td>customerGasPaymentMethod</td>
+        <td><span id="customerGasPaymentMethod">@Model.GasPaymentMethod</span></td>
+    </tr>
+    <tr>
+        <td>customerElectricitySupplyName</td>
+        <td><span id="customerElectricitySupplyName">@Model.ElectricitySupplyName</span></td>
+    </tr>
+    <tr>
+        <td>customerElectricityTariff</td>
+        <td><span id="customerElectricityTariff">@Model.ElectricityTariff</span></td>
+    </tr>
+    <tr>
+        <td>customerElectricityPaymentMethod</td>
+        <td><span id="customerElectricityPaymentMethod">@Model.ElectricityPaymentMethod</span></td>
+    </tr>
+
+    @switch (Model.GasUsageType)
+    {
+        case "2":
+            <tr>
+                <td>customerGasUsageSimpleEstimator</td>
+                <td><span id="customerGasUsageSimpleEstimator">@Model.GasUsageSimpleEstimator</span></td>
+            </tr>
+            break;
+        case "1":
+            <tr>
+                <td>customerGasHouseType</td>
+                <td><span id="customerGasHouseType">@Model.GasHouseType</span></td>
+            </tr>
+            <tr>
+                <td>customerGasNumberOfBedrooms</td>
+                <td><span id="customerGasNumberOfBedrooms">@Model.GasNumberOfBedrooms</span></td>
+            </tr>
+            <tr>
+                <td>customerGasMainCookingSource</td>
+                <td><span id="customerGasMainCookingSource">@Model.GasMainCookingSource</span></td>
+            </tr>
+            <tr>
+                <td>customerGasCookingFrequency</td>
+                <td><span id="customerGasCookingFrequency">@Model.GasCookingFrequency</span></td>
+            </tr>
+            <tr>
+                <td>customerGasCentralHeating</td>
+                <td><span id="customerGasCentralHeating">@Model.GasCentralHeating</span></td>
+            </tr>
+            <tr>
+                <td>customerGasNumberOfOccupants</td>
+                <td><span id="customerGasNumberOfOccupants">@Model.GasNumberOfOccupants</span></td>
+            </tr>
+            <tr>
+                <td>customerGasInsulation</td>
+                <td><span id="customerGasInsulation">@Model.GasInsulation</span></td>
+            </tr>
+            <tr>
+                <td>customerGasEnergyUsage</td>
+                <td><span id="customerGasEnergyUsage">@Model.GasEnergyUsage</span></td>
+            </tr>
+            break;
+        case "4":
+            <tr>
+                <td>customerGasCurrentSpend</td>
+                <td><span id="customerGasCurrentSpend">@Model.GasCurrentSpend</span></td>
+            </tr>
+            break;
+        case "3":
+            <tr>
+                <td>customerGasCurrentUsageAsKwh</td>
+                <td><span id="customerGasCurrentUsageAsKwh">@Model.GasCurrentUsageAsKwh</span></td>
+            </tr>
+            break;
+    }
+
+    @switch (Model.ElectricityUsageType)
+    {
+        case "2":
+            <tr>
+                <td>customerElectricityUsageSimpleEstimator</td>
+                <td><span id="customerElectricityUsageSimpleEstimator">@Model.ElectricityUsageSimpleEstimator</span></td>
+            </tr>
+            break;
+        case "1":
+            <tr>
+                <td>customerElectricityHouseType</td>
+                <td><span id="customerElectricityHouseType">@Model.ElectricityHouseType</span></td>
+            </tr>
+            <tr>
+                <td>customerElectricityNumberOfBedrooms</td>
+                <td><span id="customerElectricityNumberOfBedrooms">@Model.ElectricityNumberOfBedrooms</span></td>
+            </tr>
+            <tr>
+                <td>customerElectricityMainCookingSource</td>
+                <td><span id="customerElectricityMainCookingSource">@Model.ElectricityMainCookingSource</span></td>
+            </tr>
+            <tr>
+                <td>customerElectricityCookingFrequency</td>
+                <td><span id="customerElectricityCookingFrequency">@Model.ElectricityCookingFrequency</span></td>
+            </tr>
+            <tr>
+                <td>customerElectricityCentralHeating</td>
+                <td><span id="customerElectricityCentralHeating">@Model.ElectricityCentralHeating</span></td>
+            </tr>
+            <tr>
+                <td>customerElectricityNumberOfOccupants</td>
+                <td><span id="customerElectricityNumberOfOccupants">@Model.ElectricityNumberOfOccupants</span></td>
+            </tr>
+            <tr>
+                <td>customerElectricityInsulation</td>
+                <td><span id="customerElectricityInsulation">@Model.ElectricityInsulation</span></td>
+            </tr>
+            <tr>
+                <td>customerElectricityEnergyUsage</td>
+                <td><span id="customerElectricityEnergyUsage">@Model.ElectricityEnergyUsage</span></td>
+            </tr>
+            break;
+        case "4":
+            <tr>
+                <td>customerElectricityCurrentSpend</td>
+                <td><span id="customerElectricityCurrentSpend">@Model.ElectricityCurrentSpend</span></td>
+            </tr>
+            break;
+        case "3":
+            <tr>
+                <td>customerElectricityCurrentUsageAsKwh</td>
+                <td><span id="customerElectricityCurrentUsageAsKwh">@Model.ElectricityCurrentUsageAsKwh</span></td>
+            </tr>
+            break;
+    }
+    <tr>
+        <td>customerGasContractExpiryDate</td>
+        <td><span id="customerGasContractExpiryDate">@Model.GasContractExpiryDate</span></td>
+    </tr>
+    <tr>
+        <td>customerElectricityContractExpiryDate</td>
+        <td><span id="customerElectricityContractExpiryDate">@Model.ElectricityContractExpiryDate</span></td>
+    </tr>
+    <tr>
+        <td>customerNightPercentUsage</td>
+        <td><span id="customerNightPercentUsage">@Model.NightPercentUsage</span></td>
+    </tr>
+    <tr>
+        <td>customerElectricityEcomony7</td>
+        <td><span id="customerElectricityEcomony7">@Model.ElectricityEcomony7</span></td>
+    </tr>
+    <tr>
+        <td>customerTransferUrl</td>
+        <td><span id="customerTransferUrl">@Model.TransferUrl</span></td>
+    </tr>
+</table>

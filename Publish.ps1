@@ -12,6 +12,12 @@ function GetNextTag($currentTag)
 function ApplyPatch($tag, $patchFileName)
 {
     git apply --whitespace=fix $patchFileName
+    if( -not $?)
+    {
+        Write-Host "There was an error when applying patch."
+        throw "Error applying patch."
+    }
+
     git add .
     git reset .\BareboneUi\appsettings.json
     git commit -m "Release version $tag"
@@ -20,8 +26,12 @@ function ApplyPatch($tag, $patchFileName)
 }
 
 function ReclonePublicRepo{
-    Remove-Item .\barebone-ui-public -Recurse -Force
-    git clone git@github.com:energyhelpline/barebone-ui-public.git
+    if (Test-Path -Path "energy-comparison-template-website")
+    {
+        Remove-Item .\energy-comparison-template-website -Recurse -Force
+    }
+
+    git clone git@github.com:energyhelpline/energy-comparison-template-website.git
 }
 
 if ([System.IO.File]::Exists("changesSinceLastTag.patch"))
@@ -34,21 +44,27 @@ if ([System.IO.File]::Exists("changesSinceLastTag.temp.patch"))
     Remove-Item changesSinceLastTag.temp.patch
 }
 
-$latestTag = git tag --sort=-creatordate | Select-Object -First 1
+$latestTag = git tag | Select-Object -Last 1
 Write-Host "`$latestTag is $latestTag"
 
 $newTag = GetNextTag "$latestTag"
 Write-Host "`$newTag is $newTag"
 
 git tag -a $newTag -m "Release version $newTag"
-git diff $latestTag $newTag | Out-File -encoding ASCII changesSinceLastTag.temp.patch
+git diff $latestTag $newTag --binary | Out-File -encoding ASCII changesSinceLastTag.temp.patch
 ((Get-Content .\changesSinceLastTag.temp.patch) -join "`n")  | Out-File -encoding ASCII changesSinceLastTag.patch
 
 ReclonePublicRepo
-Push-Location .\barebone-ui-public
-ApplyPatch $newTag ..\changesSinceLastTag.patch
-git push --follow-tags
-Pop-Location
-
-# git push tags on private repo
-git push --tags
+Push-Location .\energy-comparison-template-website
+try {
+    ApplyPatch $newTag ..\changesSinceLastTag.patch
+    git push --follow-tags
+    Pop-Location
+    git push --tags # git push tags on private repo
+    return 0
+}
+catch {
+    Pop-Location
+    git tag --delete $newTag
+    return 1
+}

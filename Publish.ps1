@@ -9,9 +9,9 @@ function GetNextTag($currentTag)
     return "$textBeforeLastFullStop.$incrementedBuildNumber"
 }
 
-function ApplyPatch($tag)
+function ApplyPatch($tag, $patchFileName)
 {
-    git apply ..\changesSinceLastTag.patch
+    git apply --whitespace=fix $patchFileName
     git add .
     git reset .\BareboneUi\appsettings.json
     git commit -m "Release version $tag"
@@ -46,7 +46,7 @@ git diff $latestTag $newTag | Out-File -encoding ASCII changesSinceLastTag.temp.
 
 ReclonePublicRepo
 Push-Location .\barebone-ui-public
-ApplyPatch $newTag
+ApplyPatch $newTag ..\changesSinceLastTag.patch
 git push --follow-tags
 Pop-Location
 

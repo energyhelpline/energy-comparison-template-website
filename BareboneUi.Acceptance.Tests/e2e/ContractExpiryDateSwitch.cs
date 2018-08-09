@@ -62,7 +62,7 @@ namespace BareboneUi.Acceptance.Tests.e2e
                 Assert.That(string.Equals(customer.GetElectricityUsageForSimpleEstimator(), "Medium (house or large flat)", StringComparison.OrdinalIgnoreCase));
                 Assert.That(customer.GetGasContractExpiryDate(), Is.EqualTo("20/08/2047"));
                 Assert.That(customer.GetElectricityContractExpiryDate(), Is.EqualTo("20/08/2047"));
-                Assert.That(customer.GetTransferUrl(), Contains.Substring("https://refresh.staging.energyhelpline.com/domestic/energy/signup/"));
+                Assert.That(string.IsNullOrEmpty(customer.GetTransferUrl()), Is.False);
             }
         }
     }

@@ -66,7 +66,7 @@ namespace BareboneUi.Acceptance.Tests.e2e
                 Assert.That(customer.ElectricitySupplier(),              Is.EqualTo("EDF Energy"));
                 Assert.That(customer.ElectricitySupplierTariff(),        Is.EqualTo("Standard (Variable)"));
                 Assert.That(customer.ElectricitySupplierPaymentMethod(), Is.EqualTo("Pay On Receipt Of Bill"));
-                Assert.That(customer.GetTransferUrl(),                   Contains.Substring("https://refresh.staging.energyhelpline.com/domestic/energy/signup/"));
+                Assert.That(string.IsNullOrEmpty(customer.GetTransferUrl()), Is.False);
 
                 Assert.That(customer.GasHouseType(),                     Is.EqualTo("detached bungalow"));
                 Assert.That(customer.GasNumberOfBedrooms(),              Is.EqualTo("3"));

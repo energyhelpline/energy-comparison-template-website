@@ -67,7 +67,7 @@ namespace BareboneUi.Acceptance.Tests.e2e
                 Assert.That(customer.ElectricitySupplier(),              Is.EqualTo("EDF Energy"));
                 Assert.That(customer.ElectricitySupplierTariff(),        Is.EqualTo("Standard (Variable)"));
                 Assert.That(customer.ElectricitySupplierPaymentMethod(), Is.EqualTo("Pay On Receipt Of Bill"));
-                Assert.That(customer.GetTransferUrl(),                   Contains.Substring("https://refresh.staging.energyhelpline.com/domestic/energy/signup/"));
+                Assert.That(string.IsNullOrEmpty(customer.GetTransferUrl()), Is.False);
 
                 Assert.That(customer.GetGasUsageForSimpleEstimator(),    Is.EqualTo("Medium (house or large flat)"));
                 Assert.That(customer.ElectricityHouseType(),             Is.EqualTo("detached bungalow"));
@@ -131,7 +131,7 @@ namespace BareboneUi.Acceptance.Tests.e2e
                 Assert.That(customer.ElectricitySupplier(),                   Is.EqualTo("EDF Energy"));
                 Assert.That(customer.ElectricitySupplierTariff(),             Is.EqualTo("Standard (Variable)"));
                 Assert.That(customer.ElectricitySupplierPaymentMethod(),      Is.EqualTo("Pay On Receipt Of Bill"));
-                Assert.That(customer.GetTransferUrl(),                        Contains.Substring("https://refresh.staging.energyhelpline.com/domestic/energy/signup/"));
+                Assert.That(string.IsNullOrEmpty(customer.GetTransferUrl()),  Is.False);
 
                 Assert.That(customer.GetGasCurrentSpend(),                    Is.EqualTo("999"));
                 Assert.That(customer.GetElectricityUsageForSimpleEstimator(), Is.EqualTo("Medium (house or large flat)"));
@@ -188,7 +188,7 @@ namespace BareboneUi.Acceptance.Tests.e2e
                 Assert.That(customer.ElectricitySupplier(),                   Is.EqualTo("EDF Energy"));
                 Assert.That(customer.ElectricitySupplierTariff(),             Is.EqualTo("Standard (Variable)"));
                 Assert.That(customer.ElectricitySupplierPaymentMethod(),      Is.EqualTo("Pay On Receipt Of Bill"));
-                Assert.That(customer.GetTransferUrl(),                        Contains.Substring("https://refresh.staging.energyhelpline.com/domestic/energy/signup/"));
+                Assert.That(string.IsNullOrEmpty(customer.GetTransferUrl()),  Is.False);
 
                 Assert.That(customer.GetGasCurrentUsageAsKwh(),               Is.EqualTo("1234"));
                 Assert.That(customer.GetElectricityCurrentSpend(),            Is.EqualTo("555"));

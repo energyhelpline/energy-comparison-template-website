@@ -23,7 +23,7 @@ namespace BareboneUi.Common
 
         public async Task<HttpResponseMessage> Send(string uri, HttpMethod method, HttpContent data, IDictionary<string, string> headers)
         {
-            var request = new HttpRequestMessage(HttpMethod.Post, uri);
+            var request = new HttpRequestMessage(method, uri);
 
             AddContent(data, request);
             AddContentTypeHeader(headers, request);

@@ -265,3 +265,6 @@ __pycache__/
 
 energy-comparison-template-website/
 *.patch
+
+#EHL build system
+.build/

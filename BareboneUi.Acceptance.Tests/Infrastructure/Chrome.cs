@@ -23,7 +23,9 @@ namespace BareboneUi.Acceptance.Tests.Infrastructure
 
         public static RemoteWebDriver CreateDriver()
         {
-            return new RemoteWebDriver(new Uri($"http://127.0.0.1:{_port}"), new ChromeOptions());
+            var chromeOptions = new ChromeOptions();
+            chromeOptions.AddArguments("headless");
+            return new RemoteWebDriver(new Uri($"http://127.0.0.1:{_port}"), chromeOptions);
         }
     }
 }

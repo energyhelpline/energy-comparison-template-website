@@ -23,6 +23,10 @@ For security reasons, no client credentials are included in the repo. As such, t
 * Rename BareboneUi/appsettings.example.json file to BareboneUi/appsettings.json
 * Open BareboneUi/appsettings.json and update the value for ApiKey, ApiSecretKey and ApiPartnerReference to that provided by your account manager and save.
 
+* ApiKey: guid supplied by your account manager
+* ApiSecretKey: base64 encoded username and password supplied by your account manager
+* ApiPartnerReference: any string you would like to use to identify the customer, for example, or it could be hard-coded for all customers
+
 ## Building and testing the solution
 
 Run this command in the project's root directory:

@@ -64,6 +64,7 @@ try {
     return 0
 }
 catch {
+    Write-Output "##teamcity[message text='Failed to publish to git' status='ERROR']"
     Pop-Location
     git tag --delete $newTag
     return 1
